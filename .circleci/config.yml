@@ -14,7 +14,7 @@ jobs:
             - run: npm run build
  deploy2s3: 
     docker: 
-      - image: cimg/<language>:<version TAG>
+      - image: cimg/python:3.6
     steps:
       - aws-s3/copy: #invokes the sync command declared in the s3 orb
         arguments: '--dry-run'
