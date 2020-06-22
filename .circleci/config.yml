@@ -13,8 +13,8 @@ jobs:
             - run: npm install
             - run: npm run build
       - persist_to_workspace:
-          root: /home
-          path: circleci
+          root: /home/circleci/project
+          path: index.php
  deploy2s3: 
     docker: 
       - image: cimg/python:3.6
