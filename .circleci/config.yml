@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
+  aws-s3: circleci/aws-s3@1.0.15
 jobs:
  build-and-run:
     executor:
@@ -11,7 +12,12 @@ jobs:
           steps:
             - run: npm install
             - run: npm run build
+  aws-s3/copy:
+          arguments: '--dry-run'
+          from: bucket/build_asset.txt
+          to: 's3:/cicd-hackney-works-theme-artifact'
 workflows:
     build-and-run:
       jobs:
         - build-and-run
+        - aws-s3/copy
