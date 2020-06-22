@@ -17,9 +17,9 @@ jobs:
       - image: cimg/python:3.6
     steps:
       - aws-s3/copy: #invokes the sync command declared in the s3 orb
-        arguments: '--dry-run'
-        from: bucket/build_asset.txt
-        to: 's3:/cicd-hackney-works-theme-artifact'
+          arguments: '--dry-run'
+          from: bucket/build_asset.txt
+          to: 's3:/cicd-hackney-works-theme-artifact'
 workflows:
     build-and-run:
       jobs:
