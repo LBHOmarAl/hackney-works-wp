@@ -20,8 +20,9 @@ jobs:
           arguments: '--dry-run'
           from: bucket/build_asset.txt
           to: 's3:/cicd-hackney-works-theme-artifact'
-          aws-access-key-id: aws_access_key
-          aws-secret-access-key: aws_secret_access_key
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          aws-region: AWS_REGION
 workflows:
     build-and-run:
       jobs:
