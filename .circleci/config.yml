@@ -11,7 +11,10 @@ jobs:
           steps:
             - run: npm install
             - run: npm run build
+ - store_artifacts:
+          path: /home/circleci/project
 workflows:
     build-and-run:
       jobs:
         - build-and-run
+        - store_artifacts
