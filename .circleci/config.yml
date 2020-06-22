@@ -12,14 +12,16 @@ jobs:
           steps:
             - run: npm install
             - run: npm run build
-  aws-s3/copy:
-    executor:
-      name: aws-s3/default
+ deploy2s3: 
+    docker: 
+      - image: cimg/<language>:<version TAG>
+    steps:
+      - aws-s3/copy: #invokes the sync command declared in the s3 orb
+        arguments: '--dry-run'
+        from: bucket/build_asset.txt
+        to: 's3:/cicd-hackney-works-theme-artifact'
 workflows:
     build-and-run:
       jobs:
         - build-and-run
-        - aws-s3/copy:
-            arguments: '--dry-run'
-            from: bucket/build_asset.txt
-            to: 's3:/cicd-hackney-works-theme-artifact'
+        - deploy2s3
