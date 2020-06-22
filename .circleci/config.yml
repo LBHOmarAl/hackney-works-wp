@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
+  aws-s3: circleci/aws-s3@x.y
 jobs:
  build-and-run:
     executor:
@@ -15,9 +16,6 @@ jobs:
           arguments: '--dry-run'
           from: bucket/build_asset.txt
           to: 's3://my-s3-bucket-name'
-orbs:
-  aws-s3: circleci/aws-s3@x.y
-version: 2.1
 workflows:
     build-and-run:
       jobs:
