@@ -12,6 +12,9 @@ jobs:
           steps:
             - run: npm install
             - run: npm run build
+  aws-s3/copy:
+    executor:
+      name: aws-s3/default
 workflows:
     build-and-run:
       jobs:
