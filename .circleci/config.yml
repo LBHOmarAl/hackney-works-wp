@@ -11,10 +11,15 @@ jobs:
           steps:
             - run: npm install
             - run: npm run build
- - store_artifacts:
-          path: /home/circleci/project
+ - aws-s3/copy:
+          arguments: '--dry-run'
+          from: bucket/build_asset.txt
+          to: 's3://my-s3-bucket-name'
+orbs:
+  aws-s3: circleci/aws-s3@x.y
+version: 2.1
 workflows:
     build-and-run:
       jobs:
         - build-and-run
-        - store_artifacts
+        - aws-s3/copy
