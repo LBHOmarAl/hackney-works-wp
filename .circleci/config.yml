@@ -20,9 +20,9 @@ jobs:
       - image: cimg/python:3.6
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /home/circleci
       - aws-s3/copy: #invokes the sync command declared in the s3 orb
-          from: /tmp/workspace
+          from: /home/circleci/project
           to: 's3://cicd-hackney-works-theme-artifact'
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
