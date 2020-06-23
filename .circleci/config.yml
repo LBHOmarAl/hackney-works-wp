@@ -20,7 +20,7 @@ jobs:
       - image: cimg/python:3.6
     steps:
       - attach_workspace:
-          at: /home/circleci
+          at: .
       - aws-s3/copy: #invokes the sync command declared in the s3 orb
           from: /home/circleci/project
           to: 's3://cicd-hackney-works-theme-artifact'
