@@ -28,9 +28,7 @@ jobs:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           aws-region: AWS_REGION
 workflows:
-    build-and-run:
+    build-and-deploy:
       jobs:
         - build-and-run
         - deploy2s3
-            requires:
-              - build-and-run
